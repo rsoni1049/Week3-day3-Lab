@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winterland Photo Album</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <main>
+        <h1>Winterland Photo Gallery</h1>
+            <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="page2.html">Page 2</a></li>
+            <li><a href="page3.html">Page 3</a></li>
+            <li><a href="page4.html">Page 4</a></li>
+        </ul>
+    </nav>
+        <p class="subtitle">Beautiful winter landscape scenes</p>
+
+        <div class="photo-gallery">
+            <!-- Image pairs will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <footer>&copy; Copyright 2020</footer>
+
+    <script>
+        // Image gallery generation
+        const gallery = document.querySelector('.photo-gallery');
+        const imageData = [
+            {
+                src: "images/winterland1.jpg",
+                alt: "Winter landscape 1",
+                caption: "BEAUTIFUL WINTER",
+                description: "A beautiful winter scenery in the morning"
+            },
+            {
+                src: "images/winterland2.jpg",
+                alt: "Winter landscape 2",
+                caption: "SNOW LAND",
+                description: "Snow-covered trees in the wilderness"
+            },
+            {
+                src: "images/winterland3.jpg",
+                alt: "Winter landscape 3",
+                caption: "FROZEN LAKE",
+                description: "A serene frozen lake at sunset"
+            },
+            {
+                src: "images/winterland4.jpg",
+                alt: "Winter landscape 4",
+                caption: "MOUNTAIN VIEW",
+                description: "Snowy mountain peaks under blue sky"
+            },
+            {
+                src: "images/winterland5.jpg",
+                alt: "Winter landscape 5",
+                caption: "WINTER FOREST",
+                description: "Sunlight filtering through snowy trees"
+            },
+            {
+                src: "images/winterland6.jpg",
+                alt: "Winter landscape 6",
+                caption: "ICICLES",
+                description: "Close-up of sparkling icicles"
+            }
+        ];
+        
+        let galleryHTML = '';
+        
+        // Create image pairs
+        for (let i = 0; i < imageData.length; i += 2) {
+            galleryHTML += `<div class="image-pair">`;
+            
+            // First image in pair
+            if (imageData[i]) {
+                galleryHTML += `
+                    <div class="image-container">
+                        <img src="${imageData[i].src}" alt="${imageData[i].alt}">
+                        <div class="image-description">${imageData[i].description}</div>
+                        <div class="image-caption">${imageData[i].caption}</div>
+                    </div>
+                `;
+            }
+            
+            // Second image in pair
+            if (imageData[i+1]) {
+                galleryHTML += `
+                    <div class="image-container">
+                        <img src="${imageData[i+1].src}" alt="${imageData[i+1].alt}">
+                        <div class="image-description">${imageData[i+1].description}</div>
+                        <div class="image-caption">${imageData[i+1].caption}</div>
+                    </div>
+                `;
+            }
+            
+            galleryHTML += `</div>`;
+        }
+
+        gallery.innerHTML = galleryHTML;
+    </script>
+</body>
+</html>
